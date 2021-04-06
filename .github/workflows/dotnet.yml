@@ -11,6 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      SOLUTION_PATH: ..\..\src\TSP.sln
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -18,8 +21,9 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run:
+          dotnet restore ${env.SOLUTION_PATH}
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ${env.SOLUTION_PATH} --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ${env.SOLUTION_PATH} --no-build --verbosity normal
