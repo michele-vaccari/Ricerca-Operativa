@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_PATH: ..\..\src\TSP.sln
+      SOLUTION_PATH: ../../src/TSP.sln
 
     steps:
     - uses: actions/checkout@v2
