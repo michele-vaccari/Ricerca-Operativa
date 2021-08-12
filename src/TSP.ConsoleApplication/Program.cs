@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TSP.ConsoleApplication
 {
@@ -6,7 +7,11 @@ namespace TSP.ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("TSP");
+            Console.WriteLine("Start TSP");
+
+            Console.ReadLine();
+
+            Console.WriteLine("End TSP");
         }
     }
 }
