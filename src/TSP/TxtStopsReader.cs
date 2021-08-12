@@ -13,20 +13,20 @@ namespace TSP
         public List<Stop> Load(string filePath)
         {
             stops = new List<Stop>();
-            ReadVanStopFromFile(filePath);
+            ReadStopFromFile(filePath);
             return stops;
         }
 
-        private void ReadVanStopFromFile(string filePath)
+        private void ReadStopFromFile(string filePath)
         {
             string line;
             var streamReader = new System.IO.StreamReader(filePath);
             while ((line = streamReader.ReadLine()) != null)
-                stops.Add(ParseLineToVanStop(line));
+                stops.Add(ParseLineToStop(line));
 
             streamReader.Close();
         }
-        private Stop ParseLineToVanStop(string line)
+        private Stop ParseLineToStop(string line)
         {
             var splitted = line.Split(' ');
             var x = int.Parse(splitted[1]);
