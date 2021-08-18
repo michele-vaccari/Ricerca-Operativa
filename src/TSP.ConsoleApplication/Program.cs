@@ -7,11 +7,12 @@ namespace TSP.ConsoleApplication
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Start TSP");
+            Logger.Info("Start TSP");
 
             Console.ReadLine();
-
-            Console.WriteLine("End TSP");
+            Logger.Info("End TSP");
         }
+
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     }
 }
