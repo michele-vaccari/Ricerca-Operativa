@@ -5,18 +5,18 @@ namespace TSP
 {
     public class Transfer : IEquatable<Transfer>
     {
-        public Transfer(string sourceStopName,
+        public Transfer(string sourceNodeName,
                         string destinationStopName,
                         int numberOfDocuments)
         {
-            SourceStopName = sourceStopName;
-            DestinationStopName = destinationStopName;
+            SourceNodeName = sourceNodeName;
+            DestinationNodeName = destinationStopName;
             NumberOfDocuments = numberOfDocuments;
         }
 
-        public string SourceStopName { get; private set; }
-        public string DestinationStopName { get; private set; }
-        public int NumberOfDocuments { get; private set; }
+        public string SourceNodeName { get; private set; }
+        public string DestinationNodeName { get; private set; }
+        public int NumberOfDocuments { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -26,14 +26,14 @@ namespace TSP
         public bool Equals(Transfer other)
         {
             return other != null &&
-                   SourceStopName == other.SourceStopName &&
-                   DestinationStopName == other.DestinationStopName &&
+                   SourceNodeName == other.SourceNodeName &&
+                   DestinationNodeName == other.DestinationNodeName &&
                    NumberOfDocuments == other.NumberOfDocuments;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(SourceStopName, DestinationStopName, NumberOfDocuments);
+            return HashCode.Combine(SourceNodeName, DestinationNodeName, NumberOfDocuments);
         }
 
         public static bool operator ==(Transfer left, Transfer right)
