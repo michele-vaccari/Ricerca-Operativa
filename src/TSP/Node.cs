@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TSP
 {
     public class Node : IEquatable<Node>
     {
-        public Node(Stop stop,
-                    int documentsToPickUp,
-                    int documentsToDeliver)
+        public Node(string name, Point point)
         {
-            Stop = stop;
-            DocumentsToPickUp = documentsToPickUp;
-            DocumentsToDeliver = documentsToDeliver;
+            Name = name;
+            Point = point;
         }
 
-        public Stop Stop { get; private set; }
-        public int DocumentsToPickUp { get; private set; }
-        public int DocumentsToDeliver { get; private set; }
+        public string Name { get; private set; }
+        public Point Point { get; private set; }
+
+        public double EclideanDistance(Node other)
+        {
+            return Point.EuclideanDistance(other.Point);
+        }
 
         public override bool Equals(object obj)
         {
@@ -29,14 +27,13 @@ namespace TSP
         public bool Equals(Node other)
         {
             return other != null &&
-                   EqualityComparer<Stop>.Default.Equals(Stop, other.Stop) &&
-                   DocumentsToPickUp == other.DocumentsToPickUp &&
-                   DocumentsToDeliver == other.DocumentsToDeliver;
+                   Name == other.Name &&
+                   EqualityComparer<Point>.Default.Equals(Point, other.Point);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Stop, DocumentsToPickUp, DocumentsToDeliver);
+            return HashCode.Combine(Name, Point);
         }
 
         public static bool operator ==(Node left, Node right)

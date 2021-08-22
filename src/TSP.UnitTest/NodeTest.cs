@@ -8,36 +8,37 @@ namespace TSP.UnitTest
         [TestMethod]
         public void GivenNodeThenAllPropertiesAreConsistent()
         {
-            var stop = new Stop("Test", new Point(1, 1));
-            var node = new Node(stop, 1, 1);
+            var node = new Node("Test", new Point(1, 1));
 
-            Assert.IsTrue(node.Stop == new Stop("Test", new Point(1, 1)) &&
-                          node.DocumentsToPickUp == 1 &&
-                          node.DocumentsToDeliver == 1);
+            Assert.IsTrue(node.Name == "Test" &&
+                          node.Point == new Point(1, 1));
         }
 
         [TestMethod]
         public void GivenTwoNodesWithSameValuesThenTwoNodesAreEqual()
         {
-            var stop1 = new Stop("Test", new Point(1, 1));
-            var node1 = new Node(stop1, 1, 1);
-
-            var stop2 = new Stop("Test", new Point(1, 1));
-            var node2 = new Node(stop2, 1, 1);
+            var node1 = new Node("Test", new Point(1,1));
+            var node2 = new Node("Test", new Point(1, 1));
 
             Assert.IsTrue(node1 == node2);
         }
 
         [TestMethod]
-        public void GivenTwoPointsWithDifferentValuesThenTwoPointsAreNotEqual()
+        public void GivenTwoNodesWithDifferentValuesThenTwoNodesAreNotEqual()
         {
-            var stop1 = new Stop("Test", new Point(1, 1));
-            var node1 = new Node(stop1, 1, 1);
+            var node1 = new Node("Test1", new Point(1, 1));
+            var stop2 = new Node("Test", new Point(1, 1));
 
-            var stop2 = new Stop("Test", new Point(1, 1));
-            var node2 = new Node(stop2, 2, 1);
+            Assert.IsTrue(node1 != stop2);
+        }
 
-            Assert.IsTrue(node1 != node2);
+        [TestMethod]
+        public void GivenTwoNodesThenEuclideanDistanceIsCalculatedCorrectly()
+        {
+            var point1 = new Point(1, 1);
+            var point2 = new Point(1, 2);
+
+            Assert.IsTrue(point1.EuclideanDistance(point2) == 1);
         }
     }
 }
