@@ -14,6 +14,11 @@ namespace TSP
         public int X { get; private set; }
         public int Y { get; private set; }
 
+        public double EuclideanDistance(Point other)
+        {
+            return Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
+        }
+
         public override bool Equals(object obj)
         {
             return Equals(obj as Point);
